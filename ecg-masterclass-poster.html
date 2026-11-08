@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AFPICON Kerala 2027 – ECG Masterclass</title>
+  <!-- Google Fonts matching AFPICON 2027 Design Philosophy -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy-deep: #0F3560;
+      --navy-darker: #0A2546;
+      --navy-card-title: #143B6B;
+      --orange-vibrant: #F37920;
+      --orange-soft: #FFF1E4;
+      --green-kerala: #387D3C;
+      --sky-blue: #6EB4E8;
+      --sky-light: #8AC5F2;
+      --sky-tint: #EAF4FC;
+      --text-body: #2A3B4F;
+      --white: #FFFFFF;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #09192D;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 24px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Poster Canvas (4:5 / 3:4 Portrait Aspect Ratio: 1080 x 1400) */
+    .poster {
+      position: relative;
+      width: 1080px;
+      height: 1400px;
+      background:
+        radial-gradient(circle at 82% 28%, rgba(253, 218, 182, 0.55) 0%, rgba(253, 218, 182, 0.18) 34%, rgba(255, 255, 255, 0) 64%),
+        radial-gradient(circle at 15% 42%, rgba(217, 236, 250, 0.5) 0%, rgba(255, 255, 255, 0) 55%),
+        linear-gradient(180deg, #FFFFFF 0%, #FDFEFE 65%, #F4F9FD 86%, #0F3560 100%);
+      overflow: hidden;
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Subtle Ambient Warm Sunrise Glow Behind Hero Right */
+    .ambient-orb {
+      position: absolute;
+      top: 195px;
+      right: -65px;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(243, 121, 32, 0.14) 0%, rgba(243, 121, 32, 0.05) 52%, transparent 74%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ==================== 1. HEADER SECTION ==================== */
+    .header {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 40px 54px 12px 54px;
+    }
+
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .emblem-wrap {
+      width: 154px;
+      height: 154px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      background: #FFFFFF;
+      box-shadow: 0 8px 24px rgba(15, 53, 96, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .emblem-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .brand-title-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Custom AFPICON wordmark with signature stencil-cut barless 'A' */
+    .afpicon-wordmark {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 62px;
+      line-height: 0.94;
+      letter-spacing: 0.02em;
+      color: var(--navy-deep);
+      display: flex;
+      align-items: baseline;
+    }
+
+    .afpicon-wordmark .stylized-a {
+      display: inline-block;
+      width: 50px;
+      height: 49px;
+      margin-right: 1px;
+      transform: translateY(2px);
+    }
+
+    .kerala-2027 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1.12;
+      margin-top: 2px;
+      letter-spacing: -0.01em;
+    }
+
+    .kerala-2027 .kerala {
+      color: var(--green-kerala);
+    }
+
+    .kerala-2027 .year {
+      color: var(--orange-vibrant);
+      font-weight: 800;
+    }
+
+    .kozhikode-line {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      gap: 10px;
+      margin-top: 5px;
+    }
+
+    .kozhikode-line::before,
+    .kozhikode-line::after {
+      content: "";
+      flex: 1;
+      height: 1.5px;
+      background-color: var(--navy-deep);
+      opacity: 0.65;
+    }
+
+    .kozhikode-line span {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.34em;
+      color: var(--navy-deep);
+      padding-left: 0.34em;
+      text-transform: uppercase;
+    }
+
+    .conference-subtitle {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15.5px;
+      font-weight: 600;
+      color: var(--navy-deep);
+      margin-top: 5px;
+      letter-spacing: -0.01em;
+    }
+
+    .conference-subtitle sup {
+      font-size: 0.65em;
+      vertical-align: super;
+    }
+
+    .co-brand-logos {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .co-logo-card {
+      background: #FFFFFF;
+      border-radius: 8px;
+      padding: 4px;
+      box-shadow: 0 4px 14px rgba(15, 53, 96, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .co-logo-card.afpi-kerala img {
+      height: 84px;
+      width: auto;
+      display: block;
+      border-radius: 4px;
+    }
+
+    .co-logo-card.spice-route img {
+      height: 84px;
+      width: auto;
+      display: block;
+      border-radius: 4px;
+    }
+
+    /* ==================== 2. HERO SECTION ==================== */
+    .hero {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 54px 10px 54px;
+      gap: 24px;
+    }
+
+    .hero-left {
+      flex: 1;
+      max-width: 615px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .hero-title-ecg {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 68px;
+      line-height: 0.96;
+      letter-spacing: 0.015em;
+      color: var(--navy-deep);
+      text-transform: uppercase;
+    }
+
+    .hero-title-masterclass {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 74px;
+      line-height: 0.98;
+      letter-spacing: -0.015em;
+      color: var(--orange-vibrant);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* Signature Tri-Color Pill Bar */
+    .tri-color-bar {
+      display: flex;
+      align-items: center;
+      width: 210px;
+      height: 7px;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 16px 0 18px 0;
+    }
+
+    .tri-color-bar .seg-navy {
+      flex: 1;
+      height: 100%;
+      background: var(--navy-deep);
+    }
+
+    .tri-color-bar .seg-orange {
+      flex: 1;
+      height: 100%;
+      background: var(--orange-vibrant);
+    }
+
+    .tri-color-bar .seg-green {
+      flex: 1;
+      height: 100%;
+      background: var(--green-kerala);
+    }
+
+    .hero-tagline {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 22.5px;
+      line-height: 1.25;
+      letter-spacing: 0.02em;
+      color: var(--navy-deep);
+      text-transform: uppercase;
+    }
+
+    /* Stylized ECG Pulse Line across Hero Left */
+    .ecg-wave-row {
+      width: 100%;
+      margin: 10px 0 16px 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .ecg-wave-svg {
+      width: 560px;
+      height: 52px;
+      overflow: visible;
+    }
+
+    /* Registration Status Pill & Subtext */
+    .status-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(90deg, #F37920 0%, #F79433 100%);
+      color: #FFFFFF;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 23px;
+      padding: 12px 28px;
+      border-radius: 999px;
+      box-shadow: 0 10px 24px rgba(243, 121, 32, 0.28);
+      letter-spacing: 0.005em;
+    }
+
+    .status-pill .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background-color: #FFFFFF;
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.28);
+      flex-shrink: 0;
+    }
+
+    .stay-tuned {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--navy-deep);
+      padding-left: 18px;
+      letter-spacing: 0.01em;
+    }
+
+    /* Right Clinical Photo Circular Frame */
+    .hero-right {
+      position: relative;
+      flex-shrink: 0;
+      width: 345px;
+      height: 345px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .clinical-ring-outer {
+      position: relative;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      padding: 9px;
+      background: linear-gradient(135deg, var(--navy-deep) 0%, var(--sky-blue) 55%, var(--orange-vibrant) 100%);
+      box-shadow: 0 20px 45px rgba(15, 53, 96, 0.22);
+    }
+
+    .clinical-ring-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 9px solid #FFFFFF;
+      overflow: hidden;
+      position: relative;
+      background: var(--navy-darker);
+    }
+
+    .clinical-ring-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.12);
+      display: block;
+    }
+
+    /* ==================== 3. SPEAKERS / FACULTY CARDS ==================== */
+    .speakers-section {
+      position: relative;
+      z-index: 5;
+      padding: 8px 54px 12px 54px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .speaker-card {
+      position: relative;
+      background: #FFFFFF;
+      border-radius: 24px;
+      padding: 20px 34px 20px 28px;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      box-shadow: 0 12px 34px rgba(15, 53, 96, 0.09);
+      border: 1.5px solid rgba(110, 180, 232, 0.28);
+      overflow: hidden;
+    }
+
+    /* Signature Left Accent Border Bar (matching Poster 3 Card Philosophy) */
+    .speaker-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 11px;
+      border-radius: 24px 0 0 24px;
+    }
+
+    .speaker-card.card-navy::before {
+      background: var(--navy-deep);
+    }
+
+    .speaker-card.card-orange {
+      background: linear-gradient(90deg, #FFFDFB 0%, #FFFFFF 100%);
+      border-color: rgba(243, 121, 32, 0.25);
+    }
+
+    .speaker-card.card-orange::before {
+      background: var(--orange-vibrant);
+    }
+
+    .speaker-avatar-wrap {
+      width: 152px;
+      height: 152px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      padding: 4px;
+      background: linear-gradient(135deg, var(--navy-deep), var(--sky-blue));
+      box-shadow: 0 8px 20px rgba(15, 53, 96, 0.16);
+    }
+
+    .speaker-card.card-orange .speaker-avatar-wrap {
+      background: linear-gradient(135deg, var(--orange-vibrant), var(--navy-deep));
+    }
+
+    .speaker-avatar-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 4px solid #FFFFFF;
+      overflow: hidden;
+      background: #E5E9F0;
+    }
+
+    .speaker-avatar-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.06);
+      display: block;
+    }
+
+    .speaker-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .speaker-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 38px;
+      line-height: 1.15;
+      color: var(--navy-deep);
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+
+    .speaker-role {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: 24.5px;
+      line-height: 1.38;
+      color: var(--text-body);
+    }
+
+    /* ==================== 4. DATE & VENUE INFO PILL BAR ==================== */
+    .event-bar-wrap {
+      position: relative;
+      z-index: 5;
+      padding: 6px 54px 8px 54px;
+    }
+
+    .event-pill-bar {
+      background: var(--navy-deep);
+      border-radius: 18px;
+      padding: 18px 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      color: #FFFFFF;
+      box-shadow: 0 12px 28px rgba(15, 53, 96, 0.22);
+    }
+
+    .event-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 26px;
+      letter-spacing: -0.005em;
+    }
+
+    .event-item svg {
+      width: 30px;
+      height: 30px;
+      flex-shrink: 0;
+      color: var(--orange-vibrant);
+    }
+
+    .event-divider {
+      width: 2px;
+      height: 32px;
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    /* ==================== 5. WAVE & DARK NAVY FOOTER ==================== */
+    .footer-wave-section {
+      position: relative;
+      width: 100%;
+      height: 235px;
+      margin-top: auto;
+      z-index: 4;
+    }
+
+    .wave-backdrop {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .wave-backdrop svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .footer-content {
+      position: relative;
+      z-index: 3;
+      height: 100%;
+      padding: 58px 58px 26px 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-url-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1.5px solid rgba(138, 197, 242, 0.35);
+      padding: 14px 28px;
+      border-radius: 999px;
+      color: #FFFFFF;
+      text-decoration: none;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 27px;
+      letter-spacing: 0.005em;
+      backdrop-filter: blur(6px);
+    }
+
+    .footer-url-pill svg {
+      width: 30px;
+      height: 30px;
+      color: var(--orange-vibrant);
+      flex-shrink: 0;
+    }
+
+    /* Right QR Code Module in Footer */
+    .qr-footer-group {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      transform: translateY(-16px);
+    }
+
+    .qr-label-pill {
+      background: var(--orange-vibrant);
+      color: #FFFFFF;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 17px;
+      letter-spacing: 0.08em;
+      padding: 10px 20px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      box-shadow: 0 6px 18px rgba(243, 121, 32, 0.35);
+    }
+
+    .qr-card {
+      background: #FFFFFF;
+      padding: 12px;
+      border-radius: 18px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.32);
+      border: 3px solid var(--sky-light);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .qr-card img {
+      width: 136px;
+      height: 136px;
+      display: block;
+      image-rendering: crisp-edges;
+    }
+
+    /* Responsive Scaling for Smaller Screens */
+    @media (max-width: 1140px) {
+      body {
+        padding: 0;
+      }
+      .poster {
+        transform-origin: top center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="poster" role="region" aria-label="AFPICON Kerala 2027 ECG Masterclass Poster">
+    <div class="ambient-orb"></div>
+
+    <!-- 1. TOP BRANDING HEADER -->
+    <header class="header">
+      <div class="brand-lockup">
+        <div class="emblem-wrap">
+          <img src="assets/afpicon-emblem.png" alt="AFPICON Kerala 2027 Emblem" />
+        </div>
+        <div class="brand-title-group">
+          <div class="afpicon-wordmark" aria-label="AFPICON">
+            <!-- Stencil-cut barless 'A' matching official AFPICON wordmark -->
+            <svg class="stylized-a" viewBox="0 0 54 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M21.5 2H32.5L52 50H39.8L27 15.5L14.2 50H2L21.5 2Z" fill="#0F3560"/>
+            </svg><span>FPICON</span>
+          </div>
+          <div class="kerala-2027">
+            <span class="kerala">Kerala</span> <span class="year">2027</span>
+          </div>
+          <div class="kozhikode-line">
+            <span>KOZHIKODE</span>
+          </div>
+          <div class="conference-subtitle">
+            11<sup>th</sup> Annual State Conference – AFPI Kerala
+          </div>
+        </div>
+      </div>
+
+      <div class="co-brand-logos">
+        <div class="co-logo-card afpi-kerala">
+          <img src="assets/afpi-kerala-logo.png" alt="AFPI Kerala Chapter" />
+        </div>
+        <div class="co-logo-card spice-route">
+          <img src="assets/spice-route-logo.png" alt="The Spice Route AFPI" />
+        </div>
+      </div>
+    </header>
+
+    <!-- 2. HERO SECTION -->
+    <section class="hero">
+      <div class="hero-left">
+        <h1 class="hero-title-ecg">ECG</h1>
+        <div class="hero-title-masterclass">MASTERCLASS</div>
+
+        <div class="tri-color-bar" aria-hidden="true">
+          <span class="seg-navy"></span>
+          <span class="seg-orange"></span>
+          <span class="seg-green"></span>
+        </div>
+
+        <p class="hero-tagline">FROM BASICS TO BEDSIDE – WHAT NOT TO MISS</p>
+
+        <!-- Clean ECG Rhythm Line Graphic -->
+        <div class="ecg-wave-row" aria-hidden="true">
+          <svg class="ecg-wave-svg" viewBox="0 0 560 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M0 32 L55 32 C62 32 65 23 72 23 C79 23 82 32 88 32 L102 32 L109 40 L118 6 L128 48 L136 32 L152 32 C160 32 164 19 174 19 C184 19 188 32 196 32 L255 32 C262 32 265 23 272 23 C279 23 282 32 288 32 L302 32 L309 40 L318 6 L328 48 L336 32 L352 32 C360 32 364 19 374 19 C384 19 388 32 396 32 L455 32 C462 32 465 23 472 23 C479 23 482 32 488 32 L502 32 L509 40 L518 6 L528 48 L536 32 L560 32"
+              stroke="#0F3560"
+              stroke-width="2.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <circle cx="560" cy="32" r="4.5" fill="#F37920" />
+          </svg>
+        </div>
+
+        <div class="status-group">
+          <div class="status-pill">
+            <span class="dot"></span>
+            <span>Workshop Registration Starting Soon !</span>
+          </div>
+          <div class="stay-tuned">Stay Tuned For Updates</div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="clinical-ring-outer">
+          <div class="clinical-ring-inner">
+            <img src="assets/ecg-clinical.png" alt="Clinician examining ECG strip" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. SPEAKERS / FACULTY SECTION -->
+    <section class="speakers-section">
+      <!-- Speaker 1 -->
+      <article class="speaker-card card-navy">
+        <div class="speaker-avatar-wrap">
+          <div class="speaker-avatar-inner">
+            <img src="assets/dr-karthikeyan.png" alt="Dr. Karthikeyan T" />
+          </div>
+        </div>
+        <div class="speaker-info">
+          <h2 class="speaker-name">Dr. Karthikeyan T</h2>
+          <p class="speaker-role">
+            Consultant Interventional Cardiologist,<br />
+            Indiana TMH Cardiac Centre, Thalassery
+          </p>
+        </div>
+      </article>
+
+      <!-- Speaker 2 -->
+      <article class="speaker-card card-orange">
+        <div class="speaker-avatar-wrap">
+          <div class="speaker-avatar-inner">
+            <img src="assets/dr-bijoy.png" alt="Dr. Bijoy Mathew" />
+          </div>
+        </div>
+        <div class="speaker-info">
+          <h2 class="speaker-name">Dr. Bijoy Mathew</h2>
+          <p class="speaker-role">
+            Specialist, Family Medicine,<br />
+            Family Health Centre Udayagiri, Kannur
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <!-- 4. DATE & VENUE PILL BAR -->
+    <section class="event-bar-wrap">
+      <div class="event-pill-bar">
+        <div class="event-item">
+          <!-- Calendar Icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="18" rx="3" ry="3"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+            <rect x="7" y="14" width="2" height="2" fill="currentColor" stroke="none"></rect>
+            <rect x="11" y="14" width="2" height="2" fill="currentColor" stroke="none"></rect>
+            <rect x="15" y="14" width="2" height="2" fill="currentColor" stroke="none"></rect>
+          </svg>
+          <span>9th &amp; 10th January 2027</span>
+        </div>
+
+        <div class="event-divider" aria-hidden="true"></div>
+
+        <div class="event-item">
+          <!-- Map Pin Icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span>Gokulam Grand, Kozhikode</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. LAYERED WAVE & FOOTER -->
+    <footer class="footer-wave-section">
+      <div class="wave-backdrop" aria-hidden="true">
+        <svg viewBox="0 0 1080 235" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Soft Sky Blue Wave Layer -->
+          <path d="M0,44 C260,-6 470,84 760,38 C910,14 1010,20 1080,32 L1080,235 L0,235 Z" fill="#8AC5F2" opacity="0.55" />
+          <!-- Medium Coastal Blue Wave Layer -->
+          <path d="M0,58 C280,10 510,92 810,42 C940,20 1025,24 1080,38 L1080,235 L0,235 Z" fill="#5AA8E2" opacity="0.85" />
+          <!-- Deep Coastal Navy Base Wave -->
+          <path d="M0,74 C300,26 530,102 830,52 C955,31 1030,34 1080,46 L1080,235 L0,235 Z" fill="#0F3560" />
+        </svg>
+      </div>
+
+      <div class="footer-content">
+        <a href="https://afpicon2027.afpikerala.in" class="footer-url-pill">
+          <!-- Globe Icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <span>https://afpicon2027.afpikerala.in</span>
+        </a>
+
+        <div class="qr-footer-group">
+          <div class="qr-label-pill">SCAN TO REGISTER:</div>
+          <div class="qr-card">
+            <img src="assets/qr-register.png" alt="Scan QR Code to Register" />
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+</body>
+</html>
